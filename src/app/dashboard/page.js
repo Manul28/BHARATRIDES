@@ -33,7 +33,10 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import {useRouter} from 'next/navigation';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
-
+import PersonIcon from '@mui/icons-material/Person';
+import PhoneIphoneIcon from '@mui/icons-material/PhoneIphone';
+import HomeIcon from '@mui/icons-material/Home';
+import InfoIcon from '@mui/icons-material/Info';
 const theme = createTheme({
   components: {
     MuiStack: {
@@ -121,15 +124,61 @@ useEffect(() => {
   }
   }, [email]);
   const drawer = (
-    <Box sx={{ p: 2 }}>
-      <Typography variant="h6" gutterBottom>User Info</Typography>
-      <List>
-        <ListItem><ListItemText primary="Name" secondary={username} /></ListItem>
-        <ListItem><ListItemText primary="Phone Number" secondary={phoneNumber} /></ListItem>
-        <ListItem><ListItemText primary="Address" secondary={address} /></ListItem>
+  <Box
+    sx={{
+      p: 3,
+      height: '100%',
+      bgcolor: '#f0f8ff', // very light blue background
+      borderRight: '1px solid #d0e6f7',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 3,
+    }}
+  >
+    <Box display="flex" alignItems="center" gap={1}>
+      <InfoIcon color="primary" />
+      <Typography variant="h6" fontWeight={600} color="primary">
+        User Info
+      </Typography>
+    </Box>
+
+    <Box
+      sx={{
+        backgroundColor: '#ffffff',
+        borderRadius: 2,
+        boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.05)',
+        p: 2,
+      }}
+    >
+      <List disablePadding>
+        <ListItem sx={{ py: 1 }}>
+          <PersonIcon sx={{ color: '#1769aa', mr: 1 }} />
+          <ListItemText
+            primary="Name"
+            secondary={username}
+            primaryTypographyProps={{ fontWeight: 500 }}
+          />
+        </ListItem>
+        <ListItem sx={{ py: 1 }}>
+          <PhoneIphoneIcon sx={{ color: '#1769aa', mr: 1 }} />
+          <ListItemText
+            primary="Phone"
+            secondary={phoneNumber}
+            primaryTypographyProps={{ fontWeight: 500 }}
+          />
+        </ListItem>
+        <ListItem sx={{ py: 1 }}>
+          <HomeIcon sx={{ color: '#1769aa', mr: 1 }} />
+          <ListItemText
+            primary="Address"
+            secondary={address}
+            primaryTypographyProps={{ fontWeight: 500 }}
+          />
+        </ListItem>
       </List>
     </Box>
-  );
+  </Box>
+);
 
   return (
     <Box sx={{ display: 'flex' }}>
